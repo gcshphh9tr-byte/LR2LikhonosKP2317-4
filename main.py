@@ -19,24 +19,24 @@ print(POLI)
 k, T, C, L = symbols('k C T L')
 
 # 1 способ
-C_ost = 70000
+C_ost = 90000
 Am_lst = []
 C_ost_lst = []
-for i in range(8):
+for i in range(9):
     Am = (C - L) / T
-    C_ost -= Am.subs({C: 70000, T: 8, L: 0})
-    Am_lst.append(round(Am.subs({C: 70000, T: 8, L: 0}), 2))
+    C_ost -= Am.subs({C: 90000, T: 9, L: 0})
+    Am_lst.append(round(Am.subs({C: 90000, T: 9, L: 0}), 2))
     C_ost_lst.append(round(C_ost, 2)) # что это? Эта строка добавляет новое значение в конец списка C_ost_lst, предварительно округляя его до 2 знаков после запятой.
 print('Am_lst:', Am_lst)
 print('C_ost_lst:', C_ost_lst)
 
 # 2 способ 
 Aj = 0
-C_ost = 70000
+C_ost = 90000
 Am_lst_2 = []
 C_ost_lst_2 = []
-for i in range(8):
-    Am = 2 * 1/8 * (70000 - Aj)  # k=2, T=6
+for i in range(9):
+    Am = 2 * 1/9 * (90000 - Aj)  # k=2, T=6
     Am = round(Am, 2)
     C_ost -= Am
     C_ost = round(C_ost, 2)
@@ -47,7 +47,7 @@ print('Am_lst_2:', Am_lst_2)
 print('C_ost_lst_2:', C_ost_lst_2)
 
 # Табличный вывод
-Y = range(1, 9)  
+Y = range(1, 10)  
 table1 = list(zip(Y, C_ost_lst, Am_lst))
 table2 = list(zip(Y, C_ost_lst_2, Am_lst_2))
 tfame = pd.DataFrame(table1, columns=['Y', 'C_ost_lst', 'Am_lst'])
@@ -64,8 +64,8 @@ plt.savefig('chart14.png')
 
 # Первая круговая диаграмма
 vals = Am_lst
-labels = [str(x) for x in range(1, 9)]  
-explode = (0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1)
+labels = [str(x) for x in range(1, 10)]  
+explode = (0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1)
 fig, ax = plt.subplots()
 ax.pie(vals, labels=labels, autopct='%1.1f%%', shadow=True,
        explode=explode, wedgeprops={'lw': 1, 'ls': '--', 'edgecolor': "k"},
@@ -75,8 +75,8 @@ plt.savefig('chart15.png')
 
 # Вторая круговая диаграмма 
 vals = Am_lst_2
-labels = [str(x) for x in range(1, 9)]  
-explode = (0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1)  
+labels = [str(x) for x in range(1, 10)]  
+explode = (0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1)  
 fig, ax = plt.subplots()
 ax.pie(vals, labels=labels, autopct='%1.1f%%', shadow=True,
        explode=explode, wedgeprops={'lw': 1, 'ls': '--', 'edgecolor': "k"},
