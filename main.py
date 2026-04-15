@@ -117,7 +117,7 @@ cookies = [
     {
         "name": "user_token", "secure": True, "httponly": True,
         "samesite": "Strict", "domain": "app.example.com",
-        "max_age": 60 * 60 * 24 * 365, "host_prefix": False,
+        "max_age": 70 * 70 * 24 * 365, "host_prefix": False,
     },
     {
         "name": "tracking_id", "secure": False, "httponly": False,
